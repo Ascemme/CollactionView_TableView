@@ -3,8 +3,7 @@
 Parser() гдето час, 
 на TableView 2 часа, 
 CollactionView минут 30,
-DetalesView час,
-полтарачаса на settingView,
+DetalesView час и на settingView 2 часа,
 
 в общем ушло 6 - 7 часов)
 
