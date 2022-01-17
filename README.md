@@ -1,10 +1,10 @@
 # CollactionView_TableView
 Потратил на выполнение,
 Parser() гдето час, 
-на TableView 2 часа, 
+на TableView 20 минут, 
 CollactionView минут 30,
-DetalesView час и на settingView 2 часа,
+DetalesView 30 минут и на settingView 1 часа,
 
-в общем ушло 6 - 7 часов)
+в общем ушло 3 - 4 часов)
 
 
