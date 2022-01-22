@@ -28,6 +28,9 @@ class DetalesScreenViewController: UIViewController {
             
     }
     
+    
+    //MARK: - initView
+    
     func initView(){
         let user = user[0]
         navigationItem.title = user.user.name
@@ -39,6 +42,8 @@ class DetalesScreenViewController: UIViewController {
         GenderLable.text = user.user.gender
         AboutLable.text = user.user.about
     }
+    
+    //MARK: - mapPick
     
     func mapPick(){
         let annotation = MKPointAnnotation()

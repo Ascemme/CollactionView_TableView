@@ -25,6 +25,9 @@ class CallactionSreenViewController: UIViewController {
         loalding()
     }
     
+    
+    //MARK: -loalding data parser
+    
     func loalding(){
         let parser = Parser()
         DispatchQueue.main.async {
@@ -37,6 +40,7 @@ class CallactionSreenViewController: UIViewController {
     }
     
     
+    //MARK: - viewDidLayoutSubviews
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -45,7 +49,7 @@ class CallactionSreenViewController: UIViewController {
         }
     }
 
-    
+    //MARK: - initView
     
     func initView(){
         navigationController?.navigationItem.searchController = searchController
@@ -63,10 +67,13 @@ class CallactionSreenViewController: UIViewController {
         navigationItem.title = "TableView"
     }
     
+    //MARK: - searchBarBookmarkButtonClicked
+    
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         performSegue(withIdentifier: "searchSettings", sender: self)
         
     }
+    //MARK: - sortingFunctins
     
     func sortingFunctins() -> (Int){
         if searchActive{
@@ -78,6 +85,7 @@ class CallactionSreenViewController: UIViewController {
         return 0
     }
     
+    //MARK: - prepare
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detales"{
@@ -101,7 +109,7 @@ class CallactionSreenViewController: UIViewController {
     }
     
 }
-
+    //MARK: - CallactionSreenViewController
 
 extension CallactionSreenViewController: UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
@@ -111,9 +119,14 @@ extension CallactionSreenViewController: UICollectionViewDelegate, UICollectionV
         self.CustomCallactionView.reloadData()
     }
     
+    
+    //MARK: - collectionView numberOfItemsInSection
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return users.count
     }
+    
+    //MARK: - collectionView cellForItemAt
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = CustomCallactionView.dequeueReusableCell(withReuseIdentifier: "CellCollactionView", for: indexPath) as! CustomCollectionViewCell
@@ -124,9 +137,13 @@ extension CallactionSreenViewController: UICollectionViewDelegate, UICollectionV
         return cell
     }
     
+    //MARK: - collectionView didSelectItemAt
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "detales", sender: self)
     }
+    
+    //MARK: - scrollViewDidScroll didSelectItemAt
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isDataloalding {

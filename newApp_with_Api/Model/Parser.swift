@@ -9,7 +9,12 @@ import Foundation
 import UIKit
 
 
+// here we parsing data from inet or json file
+
 struct Parser{
+    
+    //MARK: - dataParserFormURL
+    
     func dataParserFormURL(url: String ,dataOfUsers: @escaping ([User]) -> () ){
         guard let url = URL(string: url) else {return}
         let urlSession = URLSession.shared
@@ -24,14 +29,11 @@ struct Parser{
         }.resume()
     }
     
-    func imagePareser (url: String, image: @escaping (UIImageView) -> ()){
-        
-    }
+    //MARK: - dataFromFile
     
-    
-    func dataFromFile(dataOfUsers: @escaping ([User]) -> () ){
+    func dataFromFile(parsingFile: String, dataOfUsers: @escaping ([User]) -> () ){
         
-        guard let jsonFile = Bundle.main.url(forResource: "generated", withExtension: "json") else { return }
+        guard let jsonFile = Bundle.main.url(forResource: parsingFile, withExtension: "json") else { return }
         do {
             let data =  try Data(contentsOf: jsonFile)
             let users = try JSONDecoder().decode([User].self, from: data)
@@ -42,12 +44,24 @@ struct Parser{
         
     }
     
+    //MARK: - allData
+    
+        // we combine all data witch we have into special type
+        // images + user data
     
     
     func allData(dataOfUsers: @escaping ([Usersdatabase]) -> ()){
-        
+        var parsingFile = ""
+        let newNextIndex =  Int.random(in: 0..<4)
+        switch newNextIndex {
+        case 1: parsingFile = "first"
+        case 2: parsingFile = "second"
+        case 3: parsingFile = "third"
+        default: parsingFile = "defolt"
+        }
+        print(newNextIndex)
         var myDB = [Usersdatabase]()
-        dataFromFile { allUsers in
+        dataFromFile(parsingFile: parsingFile) { allUsers in
             
             for i in 0..<allUsers.count{
                 if let imageURL = URL(string: allUsers[i].picture){

@@ -8,8 +8,14 @@
 import Foundation
 import UIKit
 
+
+//MARK: - SearchFilter
+
+// search bar sorting here all user data
+// I sought about other types of searching users but it's the faster one
+
+
 struct SearchFilter{
-    
     func filterContentForSearchText(searchBar: String, dbUsers: [Usersdatabase], setting: Int) -> ([Usersdatabase]) {
         
         let users = dbUsers.filter{ (user: Usersdatabase) -> Bool in

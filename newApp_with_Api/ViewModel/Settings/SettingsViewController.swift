@@ -31,6 +31,8 @@ class SettingsViewController: UIViewController {
         createDesplay()
     }
     
+    //MARK: - createDesplay
+    
     func createDesplay(){
         //first batoon
         self.btnSorting1.frame = CGRect(x: 100, y: 60, width: 20, height: 20)
@@ -94,6 +96,8 @@ class SettingsViewController: UIViewController {
         
     }
     
+    
+    //MARK: - buttons action
     
     @objc func btnAction1(){
         self.btnSorting1.layer.borderWidth = 7

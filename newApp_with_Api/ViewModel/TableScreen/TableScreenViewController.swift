@@ -26,6 +26,9 @@ class TableScreenViewController: UIViewController {
         loalding()
         
     }
+    
+    //MARK: - loalding data parser
+    
     func loalding(){
         let parser = Parser()
         DispatchQueue.main.async {
@@ -37,6 +40,8 @@ class TableScreenViewController: UIViewController {
         }
     }
 
+    //MARK: - viewDidLayoutSubviews
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if navigationItem.searchController == nil {
@@ -44,7 +49,7 @@ class TableScreenViewController: UIViewController {
         }
     }
     
-    
+    //MARK: - initView
     
     func initView(){
         navigationController?.navigationItem.searchController = searchController
@@ -62,13 +67,14 @@ class TableScreenViewController: UIViewController {
         navigationItem.title = "TableView"
     }
     
+    //MARK: - searchBarBookmarkButtonClicked
+    
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        //self.navigationController?.showDetailViewController(SettingsViewController(), sender: true)
-        //let sertw = self.present(SettingsViewController(), animated: true)
-        //self.showDetailViewController(SettingsViewController(), sender: self)
         performSegue(withIdentifier: "searchSettings", sender: self)
         
     }
+    
+    //MARK: - sortingFunctins
     
     func sortingFunctins() -> (Int){
         if searchActive{
@@ -79,6 +85,8 @@ class TableScreenViewController: UIViewController {
         }
         return 0
     }
+    
+    //MARK: - prepare
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detales"{
@@ -104,12 +112,16 @@ class TableScreenViewController: UIViewController {
     
 }
 
+//MARK: - TableScreenViewController
 
 extension TableScreenViewController: UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UINavigationBarDelegate{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
+    
+    
+    //MARK: - tableView cellForRowAt
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CustomTableView.dequeueReusableCell(withIdentifier: "CellTableView", for: indexPath) as! CustomTableViewCell
@@ -122,7 +134,7 @@ extension TableScreenViewController: UISearchBarDelegate, UITableViewDelegate, U
     }
     
     
-    
+    //MARK: - updateSearchResults
     
     func updateSearchResults(for searchController: UISearchController) {
         let searcher = SearchFilter()
@@ -132,13 +144,19 @@ extension TableScreenViewController: UISearchBarDelegate, UITableViewDelegate, U
         
     }
     
+    //MARK: - tableView heightForRowAt
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
+    //MARK: - tableView didSelectRowAt
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "detales", sender: self)
     }
+    
+    //MARK: - scrollViewDidScroll
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isDataloalding {
